@@ -186,6 +186,32 @@
       line-height: 1.45;
     }
 
+    details {
+      margin-top: 12px;
+      border: 1px solid #eee;
+      border-radius: 14px;
+      background: #fff;
+      padding: 10px 12px;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 13px;
+      color: #d71920;
+    }
+
+    .miniTag {
+      display: inline-block;
+      margin-top: 2px;
+      padding: 5px 8px;
+      background: #f1f1f1;
+      border-radius: 999px;
+      font-size: 11px;
+      color: #555;
+      font-weight: 700;
+    }
+
     .section {
       margin-top: 20px;
       font-weight: 800;
@@ -209,10 +235,6 @@
       <div>
         <h1>Toyota Calculator</h1>
         <div class="small">Monthly + Insurance + NCD + Accessories + DSR</div>
-      </div>
-      <div class="advisor">
-        Hilmi Zul<br>
-        <strong>017-393 9788</strong>
       </div>
     </div>
 
@@ -557,33 +579,19 @@
 
       const status = statusText(dsr);
 
+      const extraCost = insurancePayable + accessories;
+
       const msg =
-`Hi Hilmi, kiraan saya:
+`Kiraan Toyota:
 
 Model: ${carName}
 Method: ${methodName}
-Selling Price: ${rm(sellingPrice)}
-Discount/Rebate: ${rm(discount)}
-Net Car Price: ${rm(netCarPrice)}
-
-Insurance Before NCD: ${rm(insuranceGross)}
-NCD: ${ncd.toFixed(2)}%
-NCD Discount: ${rm(ncdDiscount)}
-Insurance Payable: ${rm(insurancePayable)}
-Insurance Payment: ${insuranceModeName}
-
-Accessories: ${rm(accessories)}
-Accessories Payment: ${accessoriesModeName}
-
-Downpayment: ${rm(downpayment)}
-Amount Used For Loan Calc: ${rm(financedBase)}
-Loan: ${rm(loan)}
-Rate: ${rate}% p.a.
-Tenure: ${tenure} tahun
 Monthly: ${rm(monthly)}
-
-Gaji Bersih: ${rm(salary)}
-Komitmen: ${rm(commitment)}
+Net Car Price: ${rm(netCarPrice)}
+Insurance + Accessories: ${rm(extraCost)}
+Downpayment: ${rm(downpayment)}
+Loan Amount: ${rm(loan)}
+Upfront Needed: ${rm(upfrontNeeded)}
 DSR: ${dsr.toFixed(1)}%`;
 
       const wa = "https://wa.me/" + salesPhone + "?text=" + encodeURIComponent(msg);
@@ -591,41 +599,43 @@ DSR: ${dsr.toFixed(1)}%`;
       els.result.innerHTML = `
         <div class="monthlyLabel">Estimated Monthly</div>
         <div class="monthly">${rm(monthly)}</div>
+        <div class="miniTag">${methodName}</div>
 
-        <div class="row"><span>Method</span><strong>${methodName}</strong></div>
         <div class="row"><span>Model</span><strong>${carName}</strong></div>
-        <div class="row"><span>Selling Price</span><strong>${rm(sellingPrice)}</strong></div>
-        <div class="row"><span>Discount / Rebate</span><strong>${rm(discount)}</strong></div>
         <div class="row"><span>Net Car Price</span><strong>${rm(netCarPrice)}</strong></div>
-
-        <div class="row"><span>Insurance Before NCD</span><strong>${rm(insuranceGross)}</strong></div>
-        <div class="row"><span>NCD</span><strong>${ncd.toFixed(2)}%</strong></div>
-        <div class="row"><span>NCD Discount</span><strong>${rm(ncdDiscount)}</strong></div>
-        <div class="row"><span>Insurance Payable</span><strong>${rm(insurancePayable)}</strong></div>
-        <div class="row"><span>Insurance Payment</span><strong>${insuranceModeName}</strong></div>
-
-        <div class="row"><span>Accessories</span><strong>${rm(accessories)}</strong></div>
-        <div class="row"><span>Accessories Payment</span><strong>${accessoriesModeName}</strong></div>
-
-        <div class="row"><span>Amount Used For Loan Calc</span><strong>${rm(financedBase)}</strong></div>
+        <div class="row"><span>Insurance + Accessories</span><strong>${rm(extraCost)}</strong></div>
         <div class="row"><span>Downpayment</span><strong>${rm(downpayment)}</strong></div>
-        <div class="row"><span>Estimated Upfront Needed</span><strong>${rm(upfrontNeeded)}</strong></div>
         <div class="row"><span>Loan Amount</span><strong>${rm(loan)}</strong></div>
-        <div class="row"><span>Loan Margin</span><strong>${loanMargin.toFixed(1)}%</strong></div>
-        <div class="row"><span>Rate</span><strong>${rate.toFixed(2)}% p.a.</strong></div>
-        <div class="row"><span>Total Interest</span><strong>${rm(interest)}</strong></div>
-        <div class="row"><span>Total Payable</span><strong>${rm(totalPayable)}</strong></div>
-
+        <div class="row"><span>Upfront Needed</span><strong>${rm(upfrontNeeded)}</strong></div>
         <div class="row"><span>DSR</span><strong>${dsr.toFixed(1)}%</strong></div>
-        <div class="row"><span>Salary Needed @40%</span><strong>${rm(salary40)}</strong></div>
-        <div class="row"><span>Salary Needed @60%</span><strong>${rm(salary60)}</strong></div>
 
         <div class="status ${status.cls}">${status.text}</div>
 
-        <a class="wa" href="${wa}" target="_blank">Send kiraan ke WhatsApp aku</a>
+        <details>
+          <summary>Show full breakdown</summary>
+
+          <div class="row"><span>Selling Price</span><strong>${rm(sellingPrice)}</strong></div>
+          <div class="row"><span>Discount / Rebate</span><strong>${rm(discount)}</strong></div>
+          <div class="row"><span>Insurance Before NCD</span><strong>${rm(insuranceGross)}</strong></div>
+          <div class="row"><span>NCD</span><strong>${ncd.toFixed(2)}%</strong></div>
+          <div class="row"><span>NCD Discount</span><strong>${rm(ncdDiscount)}</strong></div>
+          <div class="row"><span>Insurance Payable</span><strong>${rm(insurancePayable)}</strong></div>
+          <div class="row"><span>Insurance Payment</span><strong>${insuranceModeName}</strong></div>
+          <div class="row"><span>Accessories</span><strong>${rm(accessories)}</strong></div>
+          <div class="row"><span>Accessories Payment</span><strong>${accessoriesModeName}</strong></div>
+          <div class="row"><span>Amount Used For Loan Calc</span><strong>${rm(financedBase)}</strong></div>
+          <div class="row"><span>Loan Margin</span><strong>${loanMargin.toFixed(1)}%</strong></div>
+          <div class="row"><span>Rate</span><strong>${rate.toFixed(2)}% p.a.</strong></div>
+          <div class="row"><span>Total Interest</span><strong>${rm(interest)}</strong></div>
+          <div class="row"><span>Total Payable</span><strong>${rm(totalPayable)}</strong></div>
+          <div class="row"><span>Salary Needed @40%</span><strong>${rm(salary40)}</strong></div>
+          <div class="row"><span>Salary Needed @60%</span><strong>${rm(salary60)}</strong></div>
+        </details>
+
+        <a class="wa" href="${wa}" target="_blank">Send kiraan ke WhatsApp</a>
 
         <div class="note">
-          *Anggaran sahaja. Insurance amount sebenar bergantung sum insured, provider, add-on coverage dan SST/fees. Accessories amount ikut item/add-on yang customer pilih. Final approval tetap ikut bank, CCRIS/CTOS, document income, employer profile, margin loan dan policy bank.
+          *Anggaran sahaja. Final approval tetap ikut bank, CCRIS/CTOS, document income, employer profile, margin loan dan policy bank.
         </div>
       `;
     }
