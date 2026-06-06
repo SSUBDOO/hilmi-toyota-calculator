@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <title>Toyota Calculator - EIR Flat Insurance NCD Accessories</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 16px;
+      background: #f4f4f4;
+      font-family: Arial, sans-serif;
+      color: #111;
+    }
+
+    .app {
+      max-width: 560px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 22px;
+      color: #d71920;
+    }
+
+    .small {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.4;
+      margin-top: 4px;
+    }
+
+    .advisor {
+      text-align: right;
+      font-size: 12px;
+      line-height: 1.35;
+      white-space: nowrap;
+    }
+
+    .advisor strong { font-size: 13px; }
+
+    label {
+      display: block;
+      margin-top: 14px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    select, input {
+      width: 100%;
+      margin-top: 6px;
+      padding: 13px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      font-size: 16px;
+      background: #fff;
+    }
+
+    .grid2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .methodBox {
+      margin-top: 8px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .methodBox input {
+      display: none;
+    }
+
+    .methodBox label {
+      margin: 0;
+      padding: 13px 10px;
+      text-align: center;
+      border-radius: 13px;
+      border: 1px solid #ddd;
+      background: #fafafa;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .methodBox input:checked + label {
+      background: #d71920;
+      color: white;
+      border-color: #d71920;
+    }
+
+    .resultBox {
+      margin-top: 20px;
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .monthlyLabel {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .monthly {
+      font-size: 34px;
+      font-weight: 900;
+      color: #d71920;
+      margin: 4px 0 14px;
+      line-height: 1.1;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px dashed #ddd;
+      padding: 9px 0;
+      font-size: 14px;
+    }
+
+    .row strong {
+      text-align: right;
+    }
+
+    .status {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .good {
+      background: #e8f7ed;
+      color: #137333;
+      border: 1px solid #b7e4c7;
+    }
+
+    .mid {
+      background: #fff7e6;
+      color: #9a5b00;
+      border: 1px solid #ffd991;
+    }
+
+    .bad {
+      background: #fdeaea;
+      color: #b42318;
+      border: 1px solid #f5b5b5;
+    }
+
+    .wa {
+      display: block;
+      margin-top: 14px;
+      background: #25D366;
+      color: white;
+      text-align: center;
+      padding: 14px;
+      border-radius: 13px;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .note {
+      margin-top: 12px;
+      color: #777;
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .section {
+      margin-top: 20px;
+      font-weight: 800;
+      border-left: 5px solid #d71920;
+      padding-left: 9px;
+      font-size: 15px;
+    }
+
+    .hint {
+      margin-top: 6px;
+      font-size: 11px;
+      color: #777;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <div class="top">
+      <div>
+        <h1>Toyota Calculator</h1>
+        <div class="small">Monthly + Insurance + NCD + Accessories + DSR</div>
+      </div>
+      <div class="advisor">
+        Hilmi Zul<br>
+        <strong>017-393 9788</strong>
+      </div>
+    </div>
+
+    <div class="section">Car</div>
+
+    <label>Model / Variant</label>
+    <select id="car">
+      <optgroup label="Yaris">
+        <option value="88000" data-name="Toyota Yaris 1.5E">Yaris 1.5E - RM88,000</option>
+        <option value="91600" data-name="Toyota Yaris 1.5G">Yaris 1.5G - RM91,600</option>
+      </optgroup>
+
+      <optgroup label="Yaris Cross">
+        <option value="99900" data-name="Toyota Yaris Cross 1.5S">Yaris Cross 1.5S - RM99,900</option>
+        <option value="109900" data-name="Toyota Yaris Cross 1.5 HEV">Yaris Cross 1.5 HEV - RM109,900</option>
+      </optgroup>
+
+      <optgroup label="Vios">
+        <option value="90600" data-name="Toyota Vios 1.5E">Vios 1.5E - RM90,600</option>
+        <option value="96600" data-name="Toyota Vios 1.5G">Vios 1.5G - RM96,600</option>
+        <option value="103900" data-name="Toyota Vios 1.5 HEV">Vios 1.5 HEV - RM103,900</option>
+        <option value="109900" data-name="Toyota Vios 1.5 GRS HEV">Vios 1.5 GRS HEV - RM109,900</option>
+      </optgroup>
+
+      <optgroup label="Corolla">
+        <option value="144800" data-name="Toyota Corolla 1.8G">Corolla 1.8G - RM144,800</option>
+        <option value="149800" data-name="Toyota Corolla 1.8GRS">Corolla 1.8GRS - RM149,800</option>
+      </optgroup>
+
+      <optgroup label="Camry">
+        <option value="221800" data-name="Toyota Camry 2.5V">Camry 2.5V - RM221,800</option>
+        <option value="248800" data-name="Toyota Camry 2.5 HEV">Camry 2.5 HEV - RM248,800</option>
+      </optgroup>
+
+      <optgroup label="Harrier">
+        <option value="289000" data-name="Toyota Harrier 2.5 HEV">Harrier 2.5 HEV - RM289,000</option>
+      </optgroup>
+
+      <optgroup label="Corolla Cross">
+        <option value="133800" data-name="Toyota Corolla Cross 1.8V">Corolla Cross 1.8V - RM133,800</option>
+        <option value="140800" data-name="Toyota Corolla Cross 1.8 HEV">Corolla Cross 1.8 HEV - RM140,800</option>
+        <option value="148800" data-name="Toyota Corolla Cross 1.8 GRS HEV">Corolla Cross 1.8 GRS HEV - RM148,800</option>
+      </optgroup>
+
+      <optgroup label="Veloz">
+        <option value="95000" data-name="Toyota Veloz 1.5">Veloz 1.5 - RM95,000</option>
+      </optgroup>
+
+      <optgroup label="Innova Zenix">
+        <option value="165000" data-name="Toyota Innova Zenix 2.0V">Innova Zenix 2.0V - RM165,000</option>
+        <option value="202000" data-name="Toyota Innova Zenix 2.0 HEV">Innova Zenix 2.0 HEV - RM202,000</option>
+      </optgroup>
+
+      <optgroup label="Hilux">
+        <option value="104880" data-name="Toyota Hilux 2.4 S/C MT">Hilux 2.4 S/C MT - RM104,880</option>
+        <option value="117880" data-name="Toyota Hilux 2.4E MT">Hilux 2.4E MT - RM117,880</option>
+        <option value="119880" data-name="Toyota Hilux 2.4E AT">Hilux 2.4E AT - RM119,880</option>
+        <option value="149580" data-name="Toyota Hilux 2.4V AT">Hilux 2.4V AT - RM149,580</option>
+        <option value="163000" data-name="Toyota Hilux 2.8 Rogue">Hilux 2.8 Rogue - RM163,000</option>
+        <option value="173280" data-name="Toyota Hilux 2.8 GRS">Hilux 2.8 GRS - RM173,280</option>
+        <option value="226300" data-name="Toyota Hilux BEV 144kW">Hilux BEV 144kW - RM226,300</option>
+      </optgroup>
+
+      <optgroup label="Fortuner">
+        <option value="195800" data-name="Toyota Fortuner 2.4D AT">Fortuner 2.4D AT - RM195,800</option>
+        <option value="241800" data-name="Toyota Fortuner 2.8D VRZ">Fortuner 2.8D VRZ - RM241,800</option>
+        <option value="202880" data-name="Toyota Fortuner 2.7P SRZ">Fortuner 2.7P SRZ - RM202,880</option>
+      </optgroup>
+
+      <optgroup label="Hiace">
+        <option value="172000" data-name="Toyota Hiace Window 2.8 AT">Hiace Window 2.8 AT - RM172,000</option>
+        <option value="127800" data-name="Toyota Hiace Panel 3.0 MT">Hiace Panel 3.0 MT - RM127,800</option>
+      </optgroup>
+
+      <optgroup label="Vellfire / Alphard">
+        <option value="448000" data-name="Toyota Vellfire 2.5">Vellfire 2.5 - RM448,000</option>
+        <option value="549900" data-name="Toyota Vellfire 2.5 HEV">Vellfire 2.5 HEV - RM549,900</option>
+        <option value="548000" data-name="Toyota Alphard 2.4 Turbo EL">Alphard 2.4 Turbo EL - RM548,000</option>
+      </optgroup>
+
+      <optgroup label="EV">
+        <option value="198000" data-name="Toyota Urban Cruiser BEV 128kW">Urban Cruiser BEV - RM198,000</option>
+        <option value="220000" data-name="Toyota bZ4X BEV 167kW">bZ4X BEV - RM220,000</option>
+      </optgroup>
+    </select>
+
+    <div class="grid2">
+      <div>
+        <label>Discount / Rebate RM</label>
+        <input id="discount" type="number" value="0" inputmode="decimal">
+      </div>
+      <div>
+        <label>Downpayment RM</label>
+        <input id="downpayment" type="number" value="9000" inputmode="decimal">
+      </div>
+    </div>
+
+    <div class="section">Insurance</div>
+
+    <div class="grid2">
+      <div>
+        <label>Insurance Before NCD RM</label>
+        <input id="insuranceGross" type="number" value="0" inputmode="decimal">
+      </div>
+      <div>
+        <label>NCD %</label>
+        <input id="ncd" type="number" value="0" step="0.01" inputmode="decimal">
+      </div>
+    </div>
+    <div class="hint">Contoh NCD: 0, 25, 30, 38.33, 45, 55. Masuk insurance amount sebelum tolak NCD.</div>
+
+    <label>Insurance Payment</label>
+    <div class="methodBox">
+      <input type="radio" id="insuranceInLoan" name="insuranceMode" value="in" checked>
+      <label for="insuranceInLoan">Masuk Loan</label>
+
+      <input type="radio" id="insuranceUpfront" name="insuranceMode" value="out">
+      <label for="insuranceUpfront">Bayar Upfront</label>
+    </div>
+
+    <div class="section">Accessories</div>
+
+    <label>Accessories Amount RM</label>
+    <input id="accessories" type="number" value="0" inputmode="decimal">
+    <div class="hint">Contoh: tint, dashcam, bodykit, coating, leather seat, reverse cam, etc.</div>
+
+    <label>Accessories Payment</label>
+    <div class="methodBox">
+      <input type="radio" id="accessoriesInLoan" name="accessoriesMode" value="in" checked>
+      <label for="accessoriesInLoan">Masuk Loan</label>
+
+      <input type="radio" id="accessoriesUpfront" name="accessoriesMode" value="out">
+      <label for="accessoriesUpfront">Bayar Upfront</label>
+    </div>
+
+    <div class="section">Rate Method</div>
+
+    <div class="methodBox">
+      <input type="radio" id="methodEir" name="method" value="eir" checked>
+      <label for="methodEir">EIR / Reducing</label>
+
+      <input type="radio" id="methodFlat" name="method" value="flat">
+      <label for="methodFlat">Flat Rate</label>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <label id="rateLabel">EIR Rate % p.a.</label>
+        <input id="rate" type="number" value="4.40" step="0.01" inputmode="decimal">
+      </div>
+      <div>
+        <label>Tenure</label>
+        <select id="tenure">
+          <option value="5">5 Years</option>
+          <option value="7">7 Years</option>
+          <option value="9" selected>9 Years</option>
+        </select>
+      </div>
+    </div>
+    <div class="hint" id="methodHint">
+      EIR kira ikut reducing balance. Kalau bank bagi flat rate lama, pilih Flat Rate.
+    </div>
+
+    <div class="section">Kelayakan Gaji</div>
+
+    <div class="grid2">
+      <div>
+        <label>Gaji Bersih RM</label>
+        <input id="salary" type="number" value="4000" inputmode="decimal">
+      </div>
+      <div>
+        <label>Komitmen RM</label>
+        <input id="commitment" type="number" value="0" inputmode="decimal">
+      </div>
+    </div>
+
+    <div class="resultBox" id="result"></div>
+  </div>
+
+  <script>
+    const salesPhone = "60173939788";
+
+    const els = {
+      car: document.getElementById("car"),
+      discount: document.getElementById("discount"),
+      downpayment: document.getElementById("downpayment"),
+      insuranceGross: document.getElementById("insuranceGross"),
+      ncd: document.getElementById("ncd"),
+      insuranceInLoan: document.getElementById("insuranceInLoan"),
+      insuranceUpfront: document.getElementById("insuranceUpfront"),
+      accessories: document.getElementById("accessories"),
+      accessoriesInLoan: document.getElementById("accessoriesInLoan"),
+      accessoriesUpfront: document.getElementById("accessoriesUpfront"),
+      rate: document.getElementById("rate"),
+      tenure: document.getElementById("tenure"),
+      salary: document.getElementById("salary"),
+      commitment: document.getElementById("commitment"),
+      result: document.getElementById("result"),
+      rateLabel: document.getElementById("rateLabel"),
+      methodHint: document.getElementById("methodHint"),
+      methodEir: document.getElementById("methodEir"),
+      methodFlat: document.getElementById("methodFlat")
+    };
+
+    function getMethod() {
+      return document.querySelector('input[name="method"]:checked').value;
+    }
+
+    function getInsuranceMode() {
+      return document.querySelector('input[name="insuranceMode"]:checked').value;
+    }
+
+    function getAccessoriesMode() {
+      return document.querySelector('input[name="accessoriesMode"]:checked').value;
+    }
+
+    function num(id) {
+      const value = Number(els[id].value);
+      return isNaN(value) ? 0 : value;
+    }
+
+    function clamp(value, min, max) {
+      return Math.min(Math.max(value, min), max);
+    }
+
+    function rm(value) {
+      return "RM" + Number(value).toLocaleString("en-MY", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function statusText(dsr) {
+      if (dsr <= 40) {
+        return { cls: "good", text: "✅ Cantik. DSR rendah, nampak ada ruang untuk loan baru." };
+      }
+      if (dsr <= 60) {
+        return { cls: "mid", text: "⚠️ Borderline. Masih boleh try, tapi subject to bank approval." };
+      }
+      return { cls: "bad", text: "❌ Risiko tinggi. Kena tambah deposit, kurang commitment, atau pilih model lebih rendah." };
+    }
+
+    function calculateMonthly(loan, rate, tenure, method) {
+      const months = tenure * 12;
+
+      if (loan <= 0 || months <= 0) {
+        return { monthly: 0, totalInterest: 0, totalPayable: 0 };
+      }
+
+      if (method === "flat") {
+        const totalInterest = loan * (rate / 100) * tenure;
+        const totalPayable = loan + totalInterest;
+        return {
+          monthly: totalPayable / months,
+          totalInterest,
+          totalPayable
+        };
+      }
+
+      const monthlyRate = (rate / 100) / 12;
+
+      if (monthlyRate <= 0) {
+        return {
+          monthly: loan / months,
+          totalInterest: 0,
+          totalPayable: loan
+        };
+      }
+
+      const monthly = loan * monthlyRate / (1 - Math.pow(1 + monthlyRate, -months));
+      const totalPayable = monthly * months;
+      const totalInterest = totalPayable - loan;
+
+      return { monthly, totalInterest, totalPayable };
+    }
+
+    function updateMethodUI() {
+      const method = getMethod();
+
+      if (method === "eir") {
+        els.rateLabel.textContent = "EIR Rate % p.a.";
+        els.methodHint.textContent = "EIR kira ikut reducing balance. Contoh input: 4.40.";
+        if (Number(els.rate.value) < 3) els.rate.value = "4.40";
+      } else {
+        els.rateLabel.textContent = "Flat Rate % p.a.";
+        els.methodHint.textContent = "Flat Rate kira macam car loan lama. Contoh input: 2.30.";
+        if (Number(els.rate.value) > 3.5) els.rate.value = "2.30";
+      }
+    }
+
+    function calculate() {
+      const option = els.car.options[els.car.selectedIndex];
+      const carName = option.dataset.name;
+      const sellingPrice = Number(option.value);
+
+      const method = getMethod();
+      const methodName = method === "eir" ? "EIR / Reducing Balance" : "Flat Rate";
+
+      const insuranceMode = getInsuranceMode();
+      const insuranceModeName = insuranceMode === "in" ? "Masuk Loan" : "Bayar Upfront";
+
+      const accessoriesMode = getAccessoriesMode();
+      const accessoriesModeName = accessoriesMode === "in" ? "Masuk Loan" : "Bayar Upfront";
+
+      const discount = Math.max(num("discount"), 0);
+      const downpayment = Math.max(num("downpayment"), 0);
+      const insuranceGross = Math.max(num("insuranceGross"), 0);
+      const ncd = clamp(num("ncd"), 0, 100);
+      const accessories = Math.max(num("accessories"), 0);
+      const rate = Math.max(num("rate"), 0);
+      const tenure = Math.max(num("tenure"), 0);
+      const salary = Math.max(num("salary"), 0);
+      const commitment = Math.max(num("commitment"), 0);
+
+      const netCarPrice = Math.max(sellingPrice - discount, 0);
+      const ncdDiscount = insuranceGross * (ncd / 100);
+      const insurancePayable = Math.max(insuranceGross - ncdDiscount, 0);
+
+      const financedBase =
+        netCarPrice +
+        (insuranceMode === "in" ? insurancePayable : 0) +
+        (accessoriesMode === "in" ? accessories : 0);
+
+      const upfrontNeeded =
+        downpayment +
+        (insuranceMode === "out" ? insurancePayable : 0) +
+        (accessoriesMode === "out" ? accessories : 0);
+
+      const loan = Math.max(financedBase - downpayment, 0);
+
+      const calc = calculateMonthly(loan, rate, tenure, method);
+      const monthly = calc.monthly;
+      const interest = calc.totalInterest;
+      const totalPayable = calc.totalPayable;
+
+      const totalCommitment = commitment + monthly;
+      const dsr = salary > 0 ? (totalCommitment / salary) * 100 : 0;
+      const loanMargin = financedBase > 0 ? (loan / financedBase) * 100 : 0;
+
+      const salary40 = totalCommitment / 0.40;
+      const salary60 = totalCommitment / 0.60;
+
+      const status = statusText(dsr);
+
+      const msg =
+`Hi Hilmi, kiraan saya:
+
+Model: ${carName}
+Method: ${methodName}
+Selling Price: ${rm(sellingPrice)}
+Discount/Rebate: ${rm(discount)}
+Net Car Price: ${rm(netCarPrice)}
+
+Insurance Before NCD: ${rm(insuranceGross)}
+NCD: ${ncd.toFixed(2)}%
+NCD Discount: ${rm(ncdDiscount)}
+Insurance Payable: ${rm(insurancePayable)}
+Insurance Payment: ${insuranceModeName}
+
+Accessories: ${rm(accessories)}
+Accessories Payment: ${accessoriesModeName}
+
+Downpayment: ${rm(downpayment)}
+Amount Used For Loan Calc: ${rm(financedBase)}
+Loan: ${rm(loan)}
+Rate: ${rate}% p.a.
+Tenure: ${tenure} tahun
+Monthly: ${rm(monthly)}
+
+Gaji Bersih: ${rm(salary)}
+Komitmen: ${rm(commitment)}
+DSR: ${dsr.toFixed(1)}%`;
+
+      const wa = "https://wa.me/" + salesPhone + "?text=" + encodeURIComponent(msg);
+
+      els.result.innerHTML = `
+        <div class="monthlyLabel">Estimated Monthly</div>
+        <div class="monthly">${rm(monthly)}</div>
+
+        <div class="row"><span>Method</span><strong>${methodName}</strong></div>
+        <div class="row"><span>Model</span><strong>${carName}</strong></div>
+        <div class="row"><span>Selling Price</span><strong>${rm(sellingPrice)}</strong></div>
+        <div class="row"><span>Discount / Rebate</span><strong>${rm(discount)}</strong></div>
+        <div class="row"><span>Net Car Price</span><strong>${rm(netCarPrice)}</strong></div>
+
+        <div class="row"><span>Insurance Before NCD</span><strong>${rm(insuranceGross)}</strong></div>
+        <div class="row"><span>NCD</span><strong>${ncd.toFixed(2)}%</strong></div>
+        <div class="row"><span>NCD Discount</span><strong>${rm(ncdDiscount)}</strong></div>
+        <div class="row"><span>Insurance Payable</span><strong>${rm(insurancePayable)}</strong></div>
+        <div class="row"><span>Insurance Payment</span><strong>${insuranceModeName}</strong></div>
+
+        <div class="row"><span>Accessories</span><strong>${rm(accessories)}</strong></div>
+        <div class="row"><span>Accessories Payment</span><strong>${accessoriesModeName}</strong></div>
+
+        <div class="row"><span>Amount Used For Loan Calc</span><strong>${rm(financedBase)}</strong></div>
+        <div class="row"><span>Downpayment</span><strong>${rm(downpayment)}</strong></div>
+        <div class="row"><span>Estimated Upfront Needed</span><strong>${rm(upfrontNeeded)}</strong></div>
+        <div class="row"><span>Loan Amount</span><strong>${rm(loan)}</strong></div>
+        <div class="row"><span>Loan Margin</span><strong>${loanMargin.toFixed(1)}%</strong></div>
+        <div class="row"><span>Rate</span><strong>${rate.toFixed(2)}% p.a.</strong></div>
+        <div class="row"><span>Total Interest</span><strong>${rm(interest)}</strong></div>
+        <div class="row"><span>Total Payable</span><strong>${rm(totalPayable)}</strong></div>
+
+        <div class="row"><span>DSR</span><strong>${dsr.toFixed(1)}%</strong></div>
+        <div class="row"><span>Salary Needed @40%</span><strong>${rm(salary40)}</strong></div>
+        <div class="row"><span>Salary Needed @60%</span><strong>${rm(salary60)}</strong></div>
+
+        <div class="status ${status.cls}">${status.text}</div>
+
+        <a class="wa" href="${wa}" target="_blank">Send kiraan ke WhatsApp aku</a>
+
+        <div class="note">
+          *Anggaran sahaja. Insurance amount sebenar bergantung sum insured, provider, add-on coverage dan SST/fees. Accessories amount ikut item/add-on yang customer pilih. Final approval tetap ikut bank, CCRIS/CTOS, document income, employer profile, margin loan dan policy bank.
+        </div>
+      `;
+    }
+
+    function refresh() {
+      updateMethodUI();
+      calculate();
+    }
+
+    ["change", "input"].forEach(function(eventName) {
+      Object.keys(els).forEach(function(key) {
+        if (!["result", "rateLabel", "methodHint"].includes(key)) {
+          els[key].addEventListener(eventName, refresh);
+        }
+      });
+    });
+
+    refresh();
+  </script>
+</body>
+</html>
