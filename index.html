@@ -341,7 +341,24 @@ function render(){
     <div class="note">Anggaran sahaja. Final approval, exact rate, insurance, fees dan loan margin tertakluk kepada bank.</div>
   `;
 
-  const msg = `Toyota Quote%0A${model} ${variant}%0ASelling Price: ${rm(sellingPrice,true)}%0ADiscount: ${rm(discount,true)}%0ADeposit: ${rm(deposit,true)}%0ALoan: ${rm(loan,true)}%0A${methodName()}: ${rate.toFixed(2)}%25%0A9Y: ${rm(m9,true)}%0A5Y: ${rm(m5,true)}%0A7Y: ${rm(m7,true)}%0ADSR: ${dsr9.toFixed(1)}%25 ${dsrResult}`;
+  const msg =
+`Toyota Quote%0A` +
+`${model} ${variant}%0A%0A` +
+`Selling Price: ${rm(sellingPrice,true)}%0A` +
+`Discount/Rebate: -${rm(discount,true)}%0A` +
+`Price After Discount: ${rm(afterRebate,true)}%0A%0A` +
+`Insurance Before NCD: ${rm(insuranceGross,true)}%0A` +
+`NCD ${ncd.toFixed(0)}%: -${rm(ncdValue,true)}%0A` +
+`Insurance Payable: ${rm(insurancePayable,true)}%0A%0A` +
+`Accessories: ${rm(accessories,true)}%0A` +
+`Price After Add-on: ${rm(priceAfterAddOn,true)}%0A` +
+`Deposit: -${rm(deposit,true)}%0A` +
+`Loan Amount: ${rm(loan,true)}%0A%0A` +
+`${methodName()}: ${rate.toFixed(2)}%25%0A` +
+`9Y: ${rm(m9,true)}%0A` +
+`7Y: ${rm(m7,true)}%0A` +
+`5Y: ${rm(m5,true)}%0A` +
+`DSR: ${dsr9.toFixed(1)}%25 ${dsrResult}`;
   els.waBtn.href = `https://wa.me/${salesPhone}?text=${msg}`;
 }
 

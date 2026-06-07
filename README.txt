@@ -1,1 +1,1 @@
-Monthly payment order: 9, 7, 5 years.
+WhatsApp summary includes price after discount and insurance after NCD.
