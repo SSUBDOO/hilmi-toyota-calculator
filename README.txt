@@ -1,1 +1,1 @@
-Toyota quote card calculator with monthly order 9, 5, 7 years.
+Toyota quote card calculator with auto insurance by model/variant.
