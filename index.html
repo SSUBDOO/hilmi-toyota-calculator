@@ -5,127 +5,360 @@
 <title>Jom Kira Bulanan Toyota Idaman Anda</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f3f3f3;font-family:Arial,sans-serif;color:#111}.wrap{max-width:620px;margin:0 auto;padding:14px 12px 80px}.header{background:#d71920;color:#fff;border-radius:18px;padding:16px;text-align:center;margin-bottom:12px}.header h1{font-size:21px;margin:0 0 5px;line-height:1.18;letter-spacing:.3px}.header p{font-size:12px;margin:0;opacity:.9}.panel,.quote{background:#fff;border-radius:18px;padding:15px;box-shadow:0 8px 22px rgba(0,0,0,.07);margin-bottom:12px}label{display:block;margin-top:11px;font-size:11px;font-weight:900;color:#666;letter-spacing:1px;text-transform:uppercase}select,input{width:100%;margin-top:6px;padding:12px;border:1px solid #ddd;border-radius:12px;background:#fff;font-size:16px;font-weight:800;color:#111}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}.method{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}.method input{display:none}.method label{margin:0;padding:11px;text-align:center;border:1px solid #ddd;border-radius:12px;text-transform:none;letter-spacing:0;font-size:13px;cursor:pointer}.method input:checked+label{background:#d71920;color:#fff;border-color:#d71920}.quoteTop{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;border-bottom:2px solid #eee;padding-bottom:12px;margin-bottom:12px}.modelTitle{font-size:31px;font-weight:900;letter-spacing:.4px;line-height:1.05;color:#d71920;text-transform:uppercase}.modelTitle .variantBig{display:block;font-size:22px;color:#111;margin-top:5px;letter-spacing:.2px}.variantTitle{font-size:14px;color:#666;font-weight:900;margin-top:6px}.carBox{width:95px;height:54px;border-radius:12px;background:linear-gradient(135deg,#f8f8f8,#e8e8e8);display:flex;align-items:center;justify-content:center;color:#d71920;font-weight:900;font-size:11px;flex-shrink:0;text-align:center}.row{display:grid;grid-template-columns:1fr auto;gap:10px;padding:7px 0;border-bottom:1px dashed #e2e2e2;font-size:14px;align-items:center}.row span:first-child{color:#666;font-weight:800}.row strong{text-align:right;font-size:15px}.green{color:#138a36}.blue{color:#1976d2}.dsrOk{color:#138a36}.dsrTry{color:#b77900}.dsrX{color:#d71920}.sectionTitle{font-size:13px;font-weight:900;color:#444;margin:14px 0 7px;display:flex;align-items:center;gap:6px}.sectionTitle:before{content:'';width:4px;height:16px;background:#d71920;border-radius:99px}.monthlyBox{margin-top:12px;display:grid;gap:8px}.monthlyItem{display:grid;grid-template-columns:88px 1fr;align-items:center;border:2px solid #ddd;border-radius:12px;overflow:hidden;background:#fff}.monthlyItem .year{background:#f7f7f7;padding:13px;text-align:center;font-weight:900;color:#555;height:100%;display:flex;align-items:center;justify-content:center}.monthlyItem .amount{padding:12px 14px;text-align:right;font-size:24px;font-weight:900;color:#1976d2}.monthlyItem.best{border-color:#20a44b}.monthlyItem.best .year{background:#e8f7ed;color:#15803d}.note{font-size:10px;color:#777;line-height:1.35;text-align:center;margin-top:12px}.wa{position:fixed;left:12px;right:12px;bottom:12px;max-width:596px;margin:auto;display:block;background:#20c45a;color:white;text-align:center;text-decoration:none;padding:13px;border-radius:14px;font-weight:900;box-shadow:0 8px 20px rgba(0,0,0,.16)}.smallHint{font-size:10px;color:#777;margin-top:5px;line-height:1.3}.financeBottom{margin-top:12px}.financeBottom label:first-child{margin-top:0}@media(max-width:430px){.wrap{padding:10px 10px 76px}.header{padding:14px}.panel,.quote{padding:13px;border-radius:16px}.modelTitle{font-size:27px}.modelTitle .variantBig{font-size:20px}.grid2{gap:8px}select,input{font-size:15px;padding:11px}.row{font-size:13px}.row strong{font-size:14px}.monthlyItem{grid-template-columns:78px 1fr}.monthlyItem .amount{font-size:22px}}
+*{box-sizing:border-box}
+body{margin:0;background:#f3f3f3;font-family:Arial,sans-serif;color:#111}
+.wrap{max-width:620px;margin:0 auto;padding:10px 10px 82px}
+.header{background:#d71920;color:#fff;border-radius:18px;padding:18px 14px;text-align:center;margin-bottom:12px}
+.header h1{font-size:21px;margin:0 0 6px;line-height:1.18;letter-spacing:3px;font-weight:900}
+.header p{font-size:13px;margin:0;opacity:.92}
+.panel,.quote{background:#fff;border-radius:18px;padding:15px;box-shadow:0 8px 22px rgba(0,0,0,.07);margin-bottom:12px}
+label{display:block;margin-top:11px;font-size:11px;font-weight:900;color:#666;letter-spacing:2px;text-transform:uppercase}
+select,input{width:100%;margin-top:6px;padding:12px;border:1px solid #ddd;border-radius:12px;background:#fff;font-size:16px;font-weight:900;color:#111}
+select option{color:#111;background:#fff}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.moneyWrap{position:relative}
+.moneyWrap .rmPrefix{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:15px;font-weight:900;color:#666;pointer-events:none;z-index:2}
+.moneyWrap input{padding-left:48px}
+.method{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.method input{display:none}
+.method label{margin:0;padding:11px;text-align:center;border:1px solid #ddd;border-radius:12px;text-transform:none;letter-spacing:0;font-size:13px;cursor:pointer}
+.method input:checked+label{background:#d71920;color:#fff;border-color:#d71920}
+.smallHint{font-size:10px;color:#777;margin-top:6px;line-height:1.35}
+.quoteTop{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;border-bottom:2px solid #eee;padding-bottom:12px;margin-bottom:12px}
+.modelTitle{font-size:31px;font-weight:900;letter-spacing:.4px;line-height:1.05;color:#d71920;text-transform:uppercase}
+.modelTitle .variantBig{display:block;font-size:22px;color:#111;margin-top:5px;letter-spacing:.2px}
+.variantTitle{font-size:14px;color:#666;font-weight:900;margin-top:6px}
+.carBox{width:96px;height:64px;border-radius:13px;background:linear-gradient(135deg,#fafafa,#eee);display:flex;align-items:center;justify-content:center;color:#d71920;font-weight:900;font-size:13px;flex-shrink:0;text-align:center;line-height:1.3}
+.sectionTitle{font-size:14px;font-weight:900;color:#444;margin:14px 0 8px;display:flex;align-items:center;gap:7px}
+.sectionTitle:before{content:"";width:5px;height:24px;background:#d71920;border-radius:99px}
+.monthlyBox{margin-top:12px;display:grid;gap:8px}
+.monthlyItem{display:grid;grid-template-columns:92px 1fr;align-items:center;border:2px solid #ddd;border-radius:12px;overflow:hidden;background:#fff}
+.monthlyItem .year{background:#f7f7f7;padding:13px;text-align:center;font-weight:900;color:#555;height:100%;display:flex;align-items:center;justify-content:center;line-height:1.2}
+.monthlyItem .amount{padding:12px 14px;text-align:right;font-size:25px;font-weight:900;color:#1976d2}
+.monthlyItem.best{border-color:#20a44b}
+.monthlyItem.best .year{background:#e8f7ed;color:#15803d}
+.row{display:grid;grid-template-columns:1fr auto;gap:10px;padding:7px 0;border-bottom:1px dashed #e2e2e2;font-size:14px;align-items:center}
+.row span:first-child{color:#666;font-weight:800}
+.row strong{text-align:right;font-size:15px}
+.green{color:#138a36}.blue{color:#1976d2}.dsrOk{color:#138a36}.dsrTry{color:#b77900}.dsrX{color:#d71920}
+.note{font-size:10px;color:#777;line-height:1.35;text-align:center;margin-top:12px}
+.financeBottom{margin-top:12px}
+.financeBottom label:first-child{margin-top:0}
+.wa{position:fixed;left:10px;right:10px;bottom:10px;max-width:600px;margin:auto;display:block;background:#20c45a;color:white;text-align:center;text-decoration:none;padding:14px;border-radius:14px;font-weight:900;box-shadow:0 8px 20px rgba(0,0,0,.16);font-size:16px}
+@media(max-width:430px){
+  .wrap{padding:10px 10px 78px}
+  .header h1{font-size:20px;letter-spacing:2.5px}
+  .panel,.quote{padding:13px;border-radius:16px}
+  .modelTitle{font-size:27px}
+  .modelTitle .variantBig{font-size:20px}
+  select,input{font-size:16px;padding:11px}
+  .row{font-size:13px}
+  .row strong{font-size:14px}
+  .monthlyItem{grid-template-columns:82px 1fr}
+  .monthlyItem .amount{font-size:22px}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
-<div class="header"><h1>JOM KIRA BULANAN<br>TOYOTA IDAMAN ANDA</h1><p>Kiraan monthly 5 / 7 / 9 tahun</p></div>
-<div class="panel">
-<label>Model / Variant</label><select id="car"></select>
-<div class="grid2">
-<div>
-<label>Discount / Rebate RM</label>
-<select id="discountSelect">
-<option value="0">RM0</option>
-<option value="3500">RM3,500</option>
-<option value="4000">RM4,000</option>
-<option value="5000">RM5,000</option>
-<option value="7000">RM7,000</option>
-<option value="8000">RM8,000</option>
-<option value="9000">RM9,000</option>
-<option value="10000">RM10,000</option>
-<option value="10500">RM10,500</option>
-<option value="11000">RM11,000</option>
-<option value="custom">Custom</option>
-</select>
-<input id="discount" type="number" value="0" style="display:none;margin-top:6px" placeholder="Custom rebate RM">
-</div>
-<div><label>Deposit RM</label><input id="deposit" type="number" value="5000"></div>
-</div>
-<div class="grid2"><div><label>Insurance Before NCD RM</label><input id="insurance" type="number" value="0"><div class="smallHint">Auto ikut model/variant, boleh edit kalau insurance actual berbeza.</div></div><div><label>NCD %</label><input id="ncd" type="number" value="0" step="0.01"></div></div>
-<label>Accessories RM</label><input id="accessories" type="number" value="0">
+  <div class="header">
+    <h1>JOM KIRA BULANAN<br>TOYOTA IDAMAN ANDA</h1>
+    <p>Kiraan monthly 5 / 7 / 9 tahun</p>
+  </div>
 
+  <div class="panel">
+    <label>Model / Variant</label>
+    <select id="car">
+<option value="0" data-model="Yaris" data-variant="1.5E" data-price="88000" data-insurance="2900">Yaris 1.5E - RM88,000</option>
+<option value="1" data-model="Yaris" data-variant="1.5G" data-price="91600" data-insurance="3000">Yaris 1.5G - RM91,600</option>
+<option value="2" data-model="Yaris Cross" data-variant="1.5S" data-price="99900" data-insurance="3600">Yaris Cross 1.5S - RM99,900</option>
+<option value="3" data-model="Yaris Cross" data-variant="1.5 HEV" data-price="109900" data-insurance="3700">Yaris Cross 1.5 HEV - RM109,900</option>
+<option value="4" data-model="Vios" data-variant="1.5E" data-price="90600" data-insurance="3300">Vios 1.5E - RM90,600</option>
+<option value="5" data-model="Vios" data-variant="1.5G" data-price="96600" data-insurance="3500">Vios 1.5G - RM96,600</option>
+<option value="6" data-model="Vios" data-variant="1.5 HEV" data-price="103900" data-insurance="3600">Vios 1.5 HEV - RM103,900</option>
+<option value="7" data-model="Vios" data-variant="1.5 GRS HEV" data-price="109900" data-insurance="3700">Vios 1.5 GRS HEV - RM109,900</option>
+<option value="8" data-model="Veloz" data-variant="1.5" data-price="95000" data-insurance="3300">Veloz 1.5 - RM95,000</option>
+<option value="9" data-model="Corolla Cross" data-variant="1.8V" data-price="133800" data-insurance="4200">Corolla Cross 1.8V - RM133,800</option>
+<option value="10" data-model="Corolla Cross" data-variant="1.8 HEV" data-price="140800" data-insurance="4500">Corolla Cross 1.8 HEV - RM140,800</option>
+<option value="11" data-model="Corolla Cross" data-variant="1.8 GRS HEV" data-price="148800" data-insurance="4700">Corolla Cross 1.8 GRS HEV - RM148,800</option>
+<option value="12" data-model="Corolla" data-variant="1.8G" data-price="144800" data-insurance="4500">Corolla 1.8G - RM144,800</option>
+<option value="13" data-model="Corolla" data-variant="1.8GRS" data-price="149800" data-insurance="4700">Corolla 1.8GRS - RM149,800</option>
+<option value="14" data-model="Hilux" data-variant="2.4 S/C MT" data-price="104880" data-insurance="4500">Hilux 2.4 S/C MT - RM104,880</option>
+<option value="15" data-model="Hilux" data-variant="2.4E MT" data-price="117880" data-insurance="4900">Hilux 2.4E MT - RM117,880</option>
+<option value="16" data-model="Hilux" data-variant="2.4E AT" data-price="119880" data-insurance="5000">Hilux 2.4E AT - RM119,880</option>
+<option value="17" data-model="Hilux" data-variant="2.4V AT" data-price="149580" data-insurance="5600">Hilux 2.4V AT - RM149,580</option>
+<option value="18" data-model="Hilux" data-variant="2.8 Rogue" data-price="163000" data-insurance="6700">Hilux 2.8 Rogue - RM163,000</option>
+<option value="19" data-model="Hilux" data-variant="2.8 GRS" data-price="173280" data-insurance="7000">Hilux 2.8 GRS - RM173,280</option>
+<option value="20" data-model="Hilux" data-variant="BEV 144kW" data-price="226300" data-insurance="6000">Hilux BEV 144kW - RM226,300</option>
+<option value="21" data-model="Innova Zenix" data-variant="2.0V" data-price="165000" data-insurance="5500">Innova Zenix 2.0V - RM165,000</option>
+<option value="22" data-model="Innova Zenix" data-variant="2.0 HEV" data-price="202000" data-insurance="7000">Innova Zenix 2.0 HEV - RM202,000</option>
+<option value="23" data-model="Fortuner" data-variant="2.4D AT" data-price="195800" data-insurance="5500">Fortuner 2.4D AT - RM195,800</option>
+<option value="24" data-model="Fortuner" data-variant="2.8D VRZ" data-price="241800" data-insurance="6000">Fortuner 2.8D VRZ - RM241,800</option>
+<option value="25" data-model="Fortuner" data-variant="2.7P SRZ" data-price="202880" data-insurance="5800">Fortuner 2.7P SRZ - RM202,880</option>
+<option value="26" data-model="Camry" data-variant="2.5V" data-price="221800" data-insurance="5800">Camry 2.5V - RM221,800</option>
+<option value="27" data-model="Camry" data-variant="2.5 HEV" data-price="248800" data-insurance="6000">Camry 2.5 HEV - RM248,800</option>
+<option value="28" data-model="Harrier" data-variant="2.5 HEV" data-price="289000" data-insurance="7000">Harrier 2.5 HEV - RM289,000</option>
+<option value="29" data-model="Hiace" data-variant="Window 2.8 AT" data-price="172000" data-insurance="6000">Hiace Window 2.8 AT - RM172,000</option>
+<option value="30" data-model="Hiace" data-variant="Panel 3.0 MT" data-price="127800" data-insurance="4500">Hiace Panel 3.0 MT - RM127,800</option>
+<option value="31" data-model="Vellfire" data-variant="2.5" data-price="448000" data-insurance="11000">Vellfire 2.5 - RM448,000</option>
+<option value="32" data-model="Vellfire" data-variant="2.5 HEV" data-price="549900" data-insurance="14000">Vellfire 2.5 HEV - RM549,900</option>
+<option value="33" data-model="Alphard" data-variant="2.4 Turbo EL" data-price="548000" data-insurance="14000">Alphard 2.4 Turbo EL - RM548,000</option>
+<option value="34" data-model="Urban Cruiser" data-variant="BEV 128kW" data-price="198000" data-insurance="5800">Urban Cruiser BEV 128kW - RM198,000</option>
+<option value="35" data-model="bZ4X" data-variant="BEV 167kW" data-price="220000" data-insurance="6000">bZ4X BEV 167kW - RM220,000</option>
+    </select>
+
+    <div class="grid2">
+      <div>
+        <label>Discount / Rebate</label>
+        <select id="discountSelect">
+          <option value="0">RM0</option>
+          <option value="3500">RM3,500</option>
+          <option value="4000">RM4,000</option>
+          <option value="5000">RM5,000</option>
+          <option value="7000">RM7,000</option>
+          <option value="8000">RM8,000</option>
+          <option value="9000">RM9,000</option>
+          <option value="10000">RM10,000</option>
+          <option value="10500">RM10,500</option>
+          <option value="11000">RM11,000</option>
+          <option value="custom">Custom</option>
+        </select>
+        <div class="moneyWrap" id="discountWrap" style="display:none;margin-top:6px">
+          <span class="rmPrefix">RM</span>
+          <input id="discount" type="number" value="0" placeholder="Custom rebate">
+        </div>
+      </div>
+
+      <div>
+        <label>Deposit</label>
+        <div class="moneyWrap"><span class="rmPrefix">RM</span><input id="deposit" type="number" value="5000"></div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <label>Insurance Before NCD</label>
+        <div class="moneyWrap"><span class="rmPrefix">RM</span><input id="insurance" type="number" value="0"></div>
+        <div class="smallHint">Auto ikut model/variant, boleh edit kalau actual berbeza.</div>
+      </div>
+      <div>
+        <label>NCD %</label>
+        <input id="ncd" type="number" value="0" step="0.01">
+      </div>
+    </div>
+
+    <label>Accessories</label>
+    <div class="moneyWrap"><span class="rmPrefix">RM</span><input id="accessories" type="number" value="0"></div>
+  </div>
+
+  <div class="quote" id="quote"></div>
+
+  <div class="panel financeBottom">
+    <label>Rate Type</label>
+    <div class="method">
+      <input type="radio" name="method" id="flat" value="flat" checked><label for="flat">Flat Rate</label>
+      <input type="radio" name="method" id="eir" value="eir"><label for="eir">EIR</label>
+    </div>
+
+    <div class="grid2">
+      <div><label id="rateLabel">Flat Rate %</label><input id="rate" type="number" value="2.30" step="0.01"></div>
+      <div></div>
+    </div>
+
+    <div class="grid2">
+      <div><label>Gaji Bersih</label><div class="moneyWrap"><span class="rmPrefix">RM</span><input id="salary" type="number" value="3000"></div></div>
+      <div><label>Komitmen</label><div class="moneyWrap"><span class="rmPrefix">RM</span><input id="commitment" type="number" value="0"></div></div>
+    </div>
+
+    <div class="smallHint">Settings bawah result supaya quote card nampak dulu masa live. DSR result: OK / TRY / X.</div>
+  </div>
 </div>
-<div class="quote" id="quote"></div>
-<div class="panel financeBottom">
-<label>Rate Type</label>
-<div class="method"><input type="radio" name="method" id="flat" value="flat" checked><label for="flat">Flat Rate</label><input type="radio" name="method" id="eir" value="eir"><label for="eir">EIR</label></div>
-<div class="grid2"><div><label id="rateLabel">Flat Rate %</label><input id="rate" type="number" value="2.30" step="0.01"></div><div></div></div>
-<div class="grid2"><div><label>Gaji Bersih RM</label><input id="salary" type="number" value="3000"></div><div><label>Komitmen RM</label><input id="commitment" type="number" value="0"></div></div>
-<div class="smallHint">Settings bawah result supaya quote card nampak dulu masa live. DSR result: OK / TRY / X.</div>
-</div>
-</div>
+
 <a class="wa" id="waBtn" href="#" target="_blank">Send quote ke WhatsApp</a>
+
 <script>
-const salesPhone="60173939788";
-const cars=[
-["Yaris","1.5E",88000,2900],["Yaris","1.5G",91600,3000],
-["Yaris Cross","1.5S",99900,3600],["Yaris Cross","1.5 HEV",109900,3700],
-["Vios","1.5E",90600,3300],["Vios","1.5G",96600,3500],["Vios","1.5 HEV",103900,3600],["Vios","1.5 GRS HEV",109900,3700],
-["Veloz","1.5",95000,3300],
-["Corolla Cross","1.8V",133800,4200],["Corolla Cross","1.8 HEV",140800,4500],["Corolla Cross","1.8 GRS HEV",148800,4700],
-["Corolla","1.8G",144800,4500],["Corolla","1.8GRS",149800,4700],
-["Hilux","2.4 S/C MT",104880,4500],["Hilux","2.4E MT",117880,4900],["Hilux","2.4E AT",119880,5000],["Hilux","2.4V AT",149580,5600],["Hilux","2.8 Rogue",163000,6700],["Hilux","2.8 GRS",173280,7000],["Hilux","BEV 144kW",226300,6000],
-["Innova Zenix","2.0V",165000,5500],["Innova Zenix","2.0 HEV",202000,7000],
-["Fortuner","2.4D AT",195800,5500],["Fortuner","2.8D VRZ",241800,6000],["Fortuner","2.7P SRZ",202880,5800],
-["Camry","2.5V",221800,5800],["Camry","2.5 HEV",248800,6000],
-["Harrier","2.5 HEV",289000,7000],
-["Hiace","Window 2.8 AT",172000,6000],["Hiace","Panel 3.0 MT",127800,4500],
-["Vellfire","2.5",448000,11000],["Vellfire","2.5 HEV",549900,14000],
-["Alphard","2.4 Turbo EL",548000,14000],
-["Urban Cruiser","BEV 128kW",198000,5800],
-["bZ4X","BEV 167kW",220000,6000]
-];
-const els={car:document.getElementById("car"),discountSelect:document.getElementById("discountSelect"),discount:document.getElementById("discount"),deposit:document.getElementById("deposit"),insurance:document.getElementById("insurance"),ncd:document.getElementById("ncd"),accessories:document.getElementById("accessories"),salary:document.getElementById("salary"),commitment:document.getElementById("commitment"),rate:document.getElementById("rate"),rateLabel:document.getElementById("rateLabel"),quote:document.getElementById("quote"),waBtn:document.getElementById("waBtn")};
-function initCars(){els.car.innerHTML=cars.map((c,i)=>`<option value="${i}">${c[0]} ${c[1]} - ${rm(c[2])} · Ins ${rm(c[3])}</option>`).join("");setInsuranceFromCar()}
-function num(id){const v=Number(els[id].value);return Number.isFinite(v)?v:0}
-function rm(v,cents=false){return"RM"+Number(v).toLocaleString("en-MY",{minimumFractionDigits:cents?2:0,maximumFractionDigits:cents?2:0})}
-function getMethod(){return document.querySelector('input[name="method"]:checked').value}
-function methodName(){return getMethod()==="eir"?"EIR":"Flat Rate"}
-function monthlyFlat(loan,rate,years){const months=years*12;if(loan<=0||months<=0)return 0;const interest=loan*(rate/100)*years;return(loan+interest)/months}
-function monthlyEir(loan,rate,years){const months=years*12,r=(rate/100)/12;if(loan<=0||months<=0)return 0;if(r<=0)return loan/months;return loan*r/(1-Math.pow(1+r,-months))}
-function monthlyCalc(loan,rate,years){return getMethod()==="eir"?monthlyEir(loan,rate,years):monthlyFlat(loan,rate,years)}
-function totalInterest(loan,monthly,years){return Math.max((monthly*years*12)-loan,0)}
-function updateMethodUI(){if(getMethod()==="eir"){els.rateLabel.textContent="EIR %";if(num("rate")<3)els.rate.value="4.40"}else{els.rateLabel.textContent="Flat Rate %";if(num("rate")>3.5)els.rate.value="2.30"}}
+const salesPhone = "60173939788";
+
+const els = {
+  car: document.getElementById("car"),
+  discountSelect: document.getElementById("discountSelect"),
+  discountWrap: document.getElementById("discountWrap"),
+  discount: document.getElementById("discount"),
+  deposit: document.getElementById("deposit"),
+  insurance: document.getElementById("insurance"),
+  ncd: document.getElementById("ncd"),
+  accessories: document.getElementById("accessories"),
+  salary: document.getElementById("salary"),
+  commitment: document.getElementById("commitment"),
+  rate: document.getElementById("rate"),
+  rateLabel: document.getElementById("rateLabel"),
+  quote: document.getElementById("quote"),
+  waBtn: document.getElementById("waBtn")
+};
+
+function rm(value, cents=false){
+  return "RM" + Number(value).toLocaleString("en-MY", {
+    minimumFractionDigits: cents ? 2 : 0,
+    maximumFractionDigits: cents ? 2 : 0
+  });
+}
+
+function numEl(el){
+  const value = Number(el.value);
+  return Number.isFinite(value) ? value : 0;
+}
+
+function selectedCar(){
+  const opt = els.car.options[els.car.selectedIndex];
+  return {
+    model: opt.dataset.model,
+    variant: opt.dataset.variant,
+    price: Number(opt.dataset.price) || 0,
+    insurance: Number(opt.dataset.insurance) || 0
+  };
+}
+
+function setInsuranceFromCar(){
+  els.insurance.value = selectedCar().insurance;
+}
+
+function getMethod(){
+  return document.querySelector('input[name="method"]:checked').value;
+}
+
+function methodName(){
+  return getMethod() === "eir" ? "EIR" : "Flat Rate";
+}
+
 function getDiscount(){
   const value = els.discountSelect.value;
   if(value === "custom"){
-    els.discount.style.display = "block";
-    return Math.max(num("discount"),0);
+    els.discountWrap.style.display = "block";
+    return Math.max(numEl(els.discount), 0);
   }
-  els.discount.style.display = "none";
+  els.discountWrap.style.display = "none";
   els.discount.value = value;
-  return Math.max(Number(value),0);
+  return Math.max(Number(value), 0);
 }
-function setInsuranceFromCar(){
-  const selected = cars[Number(els.car.value)] || cars[0];
-  if(selected && selected[3] !== undefined){
-    els.insurance.value = selected[3];
+
+function updateMethodUI(){
+  if(getMethod() === "eir"){
+    els.rateLabel.textContent = "EIR %";
+    if(numEl(els.rate) < 3) els.rate.value = "4.40";
+  } else {
+    els.rateLabel.textContent = "Flat Rate %";
+    if(numEl(els.rate) > 3.5) els.rate.value = "2.30";
   }
 }
-function render(){updateMethodUI();const selected=cars[Number(els.car.value)]||cars[0],model=selected[0],variant=selected[1],sellingPrice=selected[2],insuranceEstimate=selected[3]||0;const discount=getDiscount(),deposit=Math.max(num("deposit"),0),insuranceGross=Math.max(num("insurance"),0),ncd=Math.min(Math.max(num("ncd"),0),100),accessories=Math.max(num("accessories"),0),salary=Math.max(num("salary"),0),commitment=Math.max(num("commitment"),0),rate=Math.max(num("rate"),0);const ncdValue=insuranceGross*(ncd/100),insurancePayable=Math.max(insuranceGross-ncdValue,0),afterRebate=Math.max(sellingPrice-discount,0),priceAfterAddOn=afterRebate+insurancePayable+accessories,loan=Math.max(priceAfterAddOn-deposit,0);const m5=monthlyCalc(loan,rate,5),m7=monthlyCalc(loan,rate,7),m9=monthlyCalc(loan,rate,9);const dsr9=salary>0?((commitment+m9)/salary)*100:0;
-let dsrResult="X";
-let dsrClass="dsrX";
-if(dsr9<=30){dsrResult="OK";dsrClass="dsrOk";}
-else if(dsr9<=50){dsrResult="TRY";dsrClass="dsrTry";}
-const interest9=totalInterest(loan,m9,9);
-els.quote.innerHTML=`<div class="quoteTop"><div><div class="modelTitle">${model}<span class="variantBig">${variant}</span></div><div class="variantTitle">${methodName()} ${rate.toFixed(2)}% · Quote Summary</div></div><div class="carBox">TOYOTA<br>${model.toUpperCase().slice(0,8)}</div></div>
-<div class="sectionTitle">Monthly Payment</div>
-<div class="monthlyBox"><div class="monthlyItem best"><div class="year">9 YEARS</div><div class="amount">${rm(m9,true)}</div></div><div class="monthlyItem"><div class="year">5 YEARS</div><div class="amount">${rm(m5,true)}</div></div><div class="monthlyItem"><div class="year">7 YEARS</div><div class="amount">${rm(m7,true)}</div></div></div>
 
-<div class="sectionTitle">Price Breakdown</div>
-<div class="row"><span>Selling Price</span><strong>${rm(sellingPrice,true)}</strong></div>
-<div class="row"><span>Insurance Before NCD</span><strong>${rm(insuranceGross,true)}</strong></div>
-<div class="row"><span>NCD ${ncd.toFixed(2)}%</span><strong class="green">-${rm(ncdValue,true)}</strong></div>
-<div class="row"><span>Insurance Payable</span><strong>${rm(insurancePayable,true)}</strong></div>
-<div class="row"><span>Discount / Rebate</span><strong class="green">-${rm(discount,true)}</strong></div>
-<div class="row"><span>Accessories</span><strong>${rm(accessories,true)}</strong></div>
-<div class="row"><span>Price After Add-on</span><strong>${rm(priceAfterAddOn,true)}</strong></div>
-<div class="row"><span>Deposit</span><strong class="blue">-${rm(deposit,true)}</strong></div>
-<div class="row"><span>Loan Amount</span><strong>${rm(loan,true)}</strong></div>
-<div class="row"><span>Interest Estimate 9 Years</span><strong>${rm(interest9,true)}</strong></div>
-<div class="row"><span>DSR Result 9 Years</span><strong class="${dsrClass}">${dsr9.toFixed(1)}% · ${dsrResult}</strong></div>
-<div class="note">Anggaran sahaja. Final approval, exact rate, insurance, fees dan loan margin tertakluk kepada bank.</div>`;
-const msg=`Toyota Quote%0A${model} ${variant}%0ASelling Price: ${rm(sellingPrice,true)}%0ADiscount: ${rm(discount,true)}%0ADeposit: ${rm(deposit,true)}%0ALoan: ${rm(loan,true)}%0A${methodName()}: ${rate.toFixed(2)}%25%0A5Y: ${rm(m5,true)}%0A7Y: ${rm(m7,true)}%0A9Y: ${rm(m9,true)}%0ADSR: ${dsr9.toFixed(1)}%25 ${dsrResult}`;els.waBtn.href=`https://wa.me/${salesPhone}?text=${msg}`}
-initCars();
-els.car.addEventListener("change",()=>{setInsuranceFromCar();render();});
-document.querySelectorAll("input,select").forEach(el=>{
-  if(el!==els.car){
-    el.addEventListener("input",render);
-    el.addEventListener("change",render);
+function monthlyFlat(loan, rate, years){
+  const months = years * 12;
+  if(loan <= 0 || months <= 0) return 0;
+  const interest = loan * (rate / 100) * years;
+  return (loan + interest) / months;
+}
+
+function monthlyEir(loan, rate, years){
+  const months = years * 12;
+  const r = (rate / 100) / 12;
+  if(loan <= 0 || months <= 0) return 0;
+  if(r <= 0) return loan / months;
+  return loan * r / (1 - Math.pow(1 + r, -months));
+}
+
+function monthlyCalc(loan, rate, years){
+  return getMethod() === "eir" ? monthlyEir(loan, rate, years) : monthlyFlat(loan, rate, years);
+}
+
+function totalInterest(loan, monthly, years){
+  return Math.max((monthly * years * 12) - loan, 0);
+}
+
+function render(){
+  updateMethodUI();
+
+  const car = selectedCar();
+  const model = car.model;
+  const variant = car.variant;
+  const sellingPrice = car.price;
+
+  const discount = getDiscount();
+  const deposit = Math.max(numEl(els.deposit), 0);
+  const insuranceGross = Math.max(numEl(els.insurance), 0);
+  const ncd = Math.min(Math.max(numEl(els.ncd), 0), 100);
+  const accessories = Math.max(numEl(els.accessories), 0);
+  const salary = Math.max(numEl(els.salary), 0);
+  const commitment = Math.max(numEl(els.commitment), 0);
+  const rate = Math.max(numEl(els.rate), 0);
+
+  const ncdValue = insuranceGross * (ncd / 100);
+  const insurancePayable = Math.max(insuranceGross - ncdValue, 0);
+  const afterRebate = Math.max(sellingPrice - discount, 0);
+  const priceAfterAddOn = afterRebate + insurancePayable + accessories;
+  const loan = Math.max(priceAfterAddOn - deposit, 0);
+
+  const m5 = monthlyCalc(loan, rate, 5);
+  const m7 = monthlyCalc(loan, rate, 7);
+  const m9 = monthlyCalc(loan, rate, 9);
+
+  const interest9 = totalInterest(loan, m9, 9);
+  const dsr9 = salary > 0 ? ((commitment + m9) / salary) * 100 : 0;
+
+  let dsrResult = "X";
+  let dsrClass = "dsrX";
+  if(dsr9 <= 30){ dsrResult = "OK"; dsrClass = "dsrOk"; }
+  else if(dsr9 <= 50){ dsrResult = "TRY"; dsrClass = "dsrTry"; }
+
+  els.quote.innerHTML = `
+    <div class="quoteTop">
+      <div>
+        <div class="modelTitle">${model}<span class="variantBig">${variant}</span></div>
+        <div class="variantTitle">${methodName()} ${rate.toFixed(2)}% · Quote Summary</div>
+      </div>
+      <div class="carBox">TOYOTA<br>${model.toUpperCase().slice(0,8)}</div>
+    </div>
+
+    <div class="sectionTitle">Monthly Payment</div>
+    <div class="monthlyBox">
+      <div class="monthlyItem best"><div class="year">9<br>YEARS</div><div class="amount">${rm(m9,true)}</div></div>
+      <div class="monthlyItem"><div class="year">7<br>YEARS</div><div class="amount">${rm(m7,true)}</div></div>
+      <div class="monthlyItem"><div class="year">5<br>YEARS</div><div class="amount">${rm(m5,true)}</div></div>
+    </div>
+
+    <div class="sectionTitle">Price Breakdown</div>
+    <div class="row"><span>Selling Price</span><strong>${rm(sellingPrice,true)}</strong></div>
+    <div class="row"><span>Insurance Before NCD</span><strong>${rm(insuranceGross,true)}</strong></div>
+    <div class="row"><span>NCD ${ncd.toFixed(2)}%</span><strong class="green">-${rm(ncdValue,true)}</strong></div>
+    <div class="row"><span>Insurance Payable</span><strong>${rm(insurancePayable,true)}</strong></div>
+    <div class="row"><span>Discount / Rebate</span><strong class="green">-${rm(discount,true)}</strong></div>
+    <div class="row"><span>Accessories</span><strong>${rm(accessories,true)}</strong></div>
+    <div class="row"><span>Price After Add-on</span><strong>${rm(priceAfterAddOn,true)}</strong></div>
+    <div class="row"><span>Deposit</span><strong class="blue">-${rm(deposit,true)}</strong></div>
+    <div class="row"><span>Loan Amount</span><strong>${rm(loan,true)}</strong></div>
+    <div class="row"><span>Interest Estimate 9 Years</span><strong>${rm(interest9,true)}</strong></div>
+    <div class="row"><span>DSR Result 9 Years</span><strong class="${dsrClass}">${dsr9.toFixed(1)}% · ${dsrResult}</strong></div>
+
+    <div class="note">Anggaran sahaja. Final approval, exact rate, insurance, fees dan loan margin tertakluk kepada bank.</div>
+  `;
+
+  const msg = `Toyota Quote%0A${model} ${variant}%0ASelling Price: ${rm(sellingPrice,true)}%0ADiscount: ${rm(discount,true)}%0ADeposit: ${rm(deposit,true)}%0ALoan: ${rm(loan,true)}%0A${methodName()}: ${rate.toFixed(2)}%25%0A9Y: ${rm(m9,true)}%0A5Y: ${rm(m5,true)}%0A7Y: ${rm(m7,true)}%0ADSR: ${dsr9.toFixed(1)}%25 ${dsrResult}`;
+  els.waBtn.href = `https://wa.me/${salesPhone}?text=${msg}`;
+}
+
+setInsuranceFromCar();
+
+els.car.addEventListener("change", () => {
+  setInsuranceFromCar();
+  render();
+});
+
+document.querySelectorAll("input,select").forEach(el => {
+  if(el !== els.car){
+    el.addEventListener("input", render);
+    el.addEventListener("change", render);
   }
 });
+
 render();
 </script>
 </body>

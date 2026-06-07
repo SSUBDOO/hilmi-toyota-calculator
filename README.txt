@@ -1,1 +1,1 @@
-Toyota quote card calculator with auto insurance by model/variant.
+Monthly payment order: 9, 7, 5 years.
