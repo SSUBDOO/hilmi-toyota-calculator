@@ -1,1 +1,1 @@
-Toyota quote card calculator with rate type/rate/commitment below result card.
+Toyota quote card calculator with monthly order 9, 5, 7 years.

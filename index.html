@@ -86,7 +86,7 @@ else if(dsr9<=50){dsrResult="TRY";dsrClass="dsrTry";}
 const interest9=totalInterest(loan,m9,9);
 els.quote.innerHTML=`<div class="quoteTop"><div><div class="modelTitle">${model}<span class="variantBig">${variant}</span></div><div class="variantTitle">${methodName()} ${rate.toFixed(2)}% · Quote Summary</div></div><div class="carBox">TOYOTA<br>${model.toUpperCase().slice(0,8)}</div></div>
 <div class="sectionTitle">Monthly Payment</div>
-<div class="monthlyBox"><div class="monthlyItem"><div class="year">5 YEARS</div><div class="amount">${rm(m5,true)}</div></div><div class="monthlyItem"><div class="year">7 YEARS</div><div class="amount">${rm(m7,true)}</div></div><div class="monthlyItem best"><div class="year">9 YEARS</div><div class="amount">${rm(m9,true)}</div></div></div>
+<div class="monthlyBox"><div class="monthlyItem best"><div class="year">9 YEARS</div><div class="amount">${rm(m9,true)}</div></div><div class="monthlyItem"><div class="year">5 YEARS</div><div class="amount">${rm(m5,true)}</div></div><div class="monthlyItem"><div class="year">7 YEARS</div><div class="amount">${rm(m7,true)}</div></div></div>
 
 <div class="sectionTitle">Price Breakdown</div>
 <div class="row"><span>Selling Price</span><strong>${rm(sellingPrice,true)}</strong></div>
